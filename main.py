@@ -1,12 +1,22 @@
 import pygame
 from constants import *
 from player import *
+from asteroid import *
+from asteroidfield import *
 
 def main():
 
     ## Groups 
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
+    asteroid_field = pygame.sprite.Group()
+    AsteroidField.containers = updatable
+    asteroid_field = AsteroidField()
+
+    ## adding asteroid group
+    Asteroid.containers = (updatable,drawable, asteroids)
+    ## adding asteroid group
     Player.containers = (updatable, drawable)
     ##
 
@@ -31,6 +41,7 @@ def main():
         for obj in updatable:
             obj.update(dt)
 
+       
 
         screen.fill("black")
         
